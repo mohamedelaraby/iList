@@ -13,6 +13,7 @@
 		44B464FA22C503EA003BB26B /* iList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44B464F822C503EA003BB26B /* iList.xcdatamodeld */; };
 		44B464FC22C503EC003BB26B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B464FB22C503EC003BB26B /* Assets.xcassets */; };
 		44B464FF22C503EC003BB26B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B464FD22C503EC003BB26B /* LaunchScreen.storyboard */; };
+		44DBBC0022C6181600B5713C /* ilistDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DBBBFF22C6181600B5713C /* ilistDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		44B464FB22C503EC003BB26B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44B464FE22C503EC003BB26B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44B4650022C503EC003BB26B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44DBBBFF22C6181600B5713C /* ilistDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ilistDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +59,39 @@
 			isa = PBXGroup;
 			children = (
 				44B464F122C503EA003BB26B /* AppDelegate.swift */,
-				44B464F322C503EA003BB26B /* IlistViewController.swift */,
-				44B464F522C503EA003BB26B /* Main.storyboard */,
+				44DBBC0122C6189400B5713C /* Model */,
+				44DBBC0322C618B000B5713C /* Controller */,
+				44DBBC0222C618A900B5713C /* View */,
 				44B464FB22C503EC003BB26B /* Assets.xcassets */,
 				44B464FD22C503EC003BB26B /* LaunchScreen.storyboard */,
 				44B4650022C503EC003BB26B /* Info.plist */,
 				44B464F822C503EA003BB26B /* iList.xcdatamodeld */,
 			);
 			path = iList;
+			sourceTree = "<group>";
+		};
+		44DBBC0122C6189400B5713C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44DBBBFF22C6181600B5713C /* ilistDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		44DBBC0222C618A900B5713C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44B464F522C503EA003BB26B /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44DBBC0322C618B000B5713C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				44B464F322C503EA003BB26B /* IlistViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DBBC0022C6181600B5713C /* ilistDataSource.swift in Sources */,
 				44B464F422C503EA003BB26B /* IlistViewController.swift in Sources */,
 				44B464F222C503EA003BB26B /* AppDelegate.swift in Sources */,
 				44B464FA22C503EA003BB26B /* iList.xcdatamodeld in Sources */,
