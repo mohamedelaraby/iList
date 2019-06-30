@@ -11,46 +11,22 @@ import UIKit
 
 class IlistViewController: UITableViewController {
 
- 
-    //Ilist Data source instances.
-    var row0Item: IListDataSource
-    var row1Item: IListDataSource
-    var row2Item: IListDataSource
-    var row3Item: IListDataSource
-    var row4Item: IListDataSource
-    
 //    todo list array.
-    var todos: ToDoList
+    var todosList: ToDoList
 
     
     //Setup the required initialization. when the view inilized from the storyboard.s
     required init?(coder aDecoder: NSCoder) {
         
         //Init the IList data source instances.
-        row0Item = IListDataSource()
-        row1Item = IListDataSource()
-        row2Item = IListDataSource()
-        row3Item = IListDataSource()
-        row4Item = IListDataSource()
-        
-        
-        
-        row0Item.text = " Take a jog"
-        row1Item.text = " Watch a movie"
-        row2Item.text = "Code an app"
-        row3Item.text = "Walk the Dog"
-        row3Item.text = "Walk the Dog"
-        row4Item.text = "Study the design pattern"
-        
-        todos = ToDoList()
-    
+        todosList = ToDoList()
         super.init(coder: aDecoder)
     }
     
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return todosList.todos.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,21 +36,8 @@ class IlistViewController: UITableViewController {
         //Find the label sing tag property.
         if let label = cell.viewWithTag(1000) as? UILabel {
             
-            //Check for the row of the cell.
-          if indexPath.row  == 0 {
-                label.text = row0Item.text
-            } else if  indexPath.row  == 1 {
-                label.text = row1Item.text
-            }  else if indexPath.row  == 2 {
-                label.text = row2Item.text
-            }  else if indexPath.row  == 3{
-                label.text = row3Item.text
-            }  else if indexPath.row  == 4 {
-                label.text = row4Item.text
-            }
-            else {
-                label.text = "Sleep"
-            }
+            label.text = todosList.todos[indexPath.row].text
+            
         }
         //Display new data into the cell.
         configureCheckMark(for: cell, at: indexPath)
@@ -101,63 +64,19 @@ class IlistViewController: UITableViewController {
     
     func configureCheckMark(for cell: UITableViewCell, at indexPath: IndexPath) {
        
-            if indexPath.row == 0 {
-                if row0Item.checkItems {
+         let isChecked = todosList.todos[indexPath.row].checkItems
+        
+                if isChecked {
                     cell.accessoryType = .none
                 } else {
                     cell.accessoryType = .checkmark
                 }
-                
-                row0Item.checkItems = !row0Item.checkItems
-                
-            } else if indexPath.row  == 1 {
-            
-                if row1Item.checkItems {
-                    cell.accessoryType = .none
-                } else {
-                    cell.accessoryType = .checkmark
-                }
-                
-                row1Item.checkItems = !row1Item.checkItems
-                
-            } else if indexPath.row  == 2 {
-                
-                    if row2Item.checkItems {
-                        cell.accessoryType = .none
-                    } else {
-                        cell.accessoryType = .checkmark
-                    }
-                    
-                    row2Item.checkItems = !row2Item.checkItems
-                    
-                } else if indexPath.row  == 3 {
-            
-                    if row3Item.checkItems {
-                        cell.accessoryType = .none
-                    } else {
-                        cell.accessoryType = .checkmark
-                    }
-                    
-                    row3Item.checkItems = !row3Item.checkItems
-                    
-                } else if indexPath.row  == 4 {
-                
-                    if row4Item.checkItems {
-                        cell.accessoryType = .none
-                    } else {
-                        cell.accessoryType = .checkmark
-                    }
-                    
-                    row4Item.checkItems = !row4Item.checkItems
-               } else {
-                    if cell.accessoryType == .none {
-                        cell.accessoryType = .checkmark
-                    } else {
-                        cell.accessoryType = .none
-                    }
-        }
-       }
+        
+        todosList.todos[indexPath.row].checkItems = !isChecked
+    }
+        
 }
+
 
 
 

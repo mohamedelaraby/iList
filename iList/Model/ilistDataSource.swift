@@ -11,7 +11,6 @@
 import Foundation
 
 class IListDataSource {
-    
     var text = " "
     var checkItems = false
 }
