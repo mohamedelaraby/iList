@@ -32,15 +32,14 @@ class IlistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: "CheckListItem", for: indexPath)
+
+        //Get the iListCheckedItem.
+        let item = todosList.todos[indexPath.row]
+        //Update the text.
+        configurateText(for: cell, with: item)
         
-        //Find the label sing tag property.
-        if let label = cell.viewWithTag(1000) as? UILabel {
-            
-            label.text = todosList.todos[indexPath.row].text
-            
-        }
         //Display new data into the cell.
-        configureCheckMark(for: cell, at: indexPath)
+        configureCheckMark(for: cell, with: item)
         
         return cell
 }
@@ -51,7 +50,8 @@ class IlistViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     if let cell = tableView.cellForRow(at: indexPath) {
         
-            configureCheckMark(for: cell, at: indexPath)
+        let item = todosList.todos[indexPath.row]
+        configureCheckMark(for: cell, with: item)
             //Deselect the row after the user tapping on the cell.
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -60,19 +60,26 @@ class IlistViewController: UITableViewController {
     }
     
     
+    
+    //Update the text dynamically.
+    func configurateText(for cell: UITableViewCell, with item: IListDataSource) {
+        
+        //Find the label sing tag property.
+        if let label = cell.viewWithTag(1000) as? UILabel {
+            label.text = item.text
+        }
+    }
     //For display new data in the cell because of the recycled cell still hold the old data.
     
-    func configureCheckMark(for cell: UITableViewCell, at indexPath: IndexPath) {
+    func configureCheckMark(for cell: UITableViewCell, with item: IListDataSource) {
        
-         let isChecked = todosList.todos[indexPath.row].checkItems
-        
-                if isChecked {
+                if item.checkItems {
                     cell.accessoryType = .none
                 } else {
                     cell.accessoryType = .checkmark
                 }
-        
-        todosList.todos[indexPath.row].checkItems = !isChecked
+        //Access the checkItem property from the todo model.
+        item.toggleChecked()
     }
         
 }

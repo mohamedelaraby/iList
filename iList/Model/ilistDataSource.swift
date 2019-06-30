@@ -13,4 +13,9 @@ import Foundation
 class IListDataSource {
     var text = " "
     var checkItems = false
+    
+    //Toggle the checked item.
+    func toggleChecked() {
+        checkItems = !checkItems
+    }
 }
