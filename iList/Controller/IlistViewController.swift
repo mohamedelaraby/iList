@@ -18,7 +18,9 @@ class IlistViewController: UITableViewController {
     var row2Item: IListDataSource
     var row3Item: IListDataSource
     var row4Item: IListDataSource
-    var row5Item: IListDataSource
+    
+//    todo list array.
+    var todos: ToDoList
 
     
     //Setup the required initialization. when the view inilized from the storyboard.s
@@ -26,22 +28,21 @@ class IlistViewController: UITableViewController {
         
         //Init the IList data source instances.
         row0Item = IListDataSource()
-        row0Item.text = " Take a jog"
-        
         row1Item = IListDataSource()
-         row1Item.text = " Watch a movie"
-        
         row2Item = IListDataSource()
-        row2Item.text = "Code an app"
-        
         row3Item = IListDataSource()
-        row3Item.text = "Walk the Dog"
-        
         row4Item = IListDataSource()
+        
+        
+        
+        row0Item.text = " Take a jog"
+        row1Item.text = " Watch a movie"
+        row2Item.text = "Code an app"
+        row3Item.text = "Walk the Dog"
+        row3Item.text = "Walk the Dog"
         row4Item.text = "Study the design pattern"
         
-        row5Item = IListDataSource()
-        row5Item.text = " Sleep"
+        todos = ToDoList()
     
         super.init(coder: aDecoder)
     }
@@ -49,7 +50,7 @@ class IlistViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,17 +63,17 @@ class IlistViewController: UITableViewController {
             //Check for the row of the cell.
           if indexPath.row  == 0 {
                 label.text = row0Item.text
-            } else if  indexPath.row % 4 == 0 {
+            } else if  indexPath.row  == 1 {
                 label.text = row1Item.text
-            }  else if indexPath.row % 3 == 0 {
+            }  else if indexPath.row  == 2 {
                 label.text = row2Item.text
-            }  else if indexPath.row % 2 == 0 {
+            }  else if indexPath.row  == 3{
                 label.text = row3Item.text
-            }  else if indexPath.row % 1 == 0 {
+            }  else if indexPath.row  == 4 {
                 label.text = row4Item.text
             }
             else {
-                label.text = row5Item.text
+                label.text = "Sleep"
             }
         }
         //Display new data into the cell.
@@ -109,7 +110,7 @@ class IlistViewController: UITableViewController {
                 
                 row0Item.checkItems = !row0Item.checkItems
                 
-            } else if indexPath.row % 4 == 0 {
+            } else if indexPath.row  == 1 {
             
                 if row1Item.checkItems {
                     cell.accessoryType = .none
@@ -119,7 +120,7 @@ class IlistViewController: UITableViewController {
                 
                 row1Item.checkItems = !row1Item.checkItems
                 
-            } else if indexPath.row % 3 == 0 {
+            } else if indexPath.row  == 2 {
                 
                     if row2Item.checkItems {
                         cell.accessoryType = .none
@@ -129,7 +130,7 @@ class IlistViewController: UITableViewController {
                     
                     row2Item.checkItems = !row2Item.checkItems
                     
-                } else if indexPath.row % 2 == 0 {
+                } else if indexPath.row  == 3 {
             
                     if row3Item.checkItems {
                         cell.accessoryType = .none
@@ -139,7 +140,7 @@ class IlistViewController: UITableViewController {
                     
                     row3Item.checkItems = !row3Item.checkItems
                     
-                } else if indexPath.row % 1 == 0 {
+                } else if indexPath.row  == 4 {
                 
                     if row4Item.checkItems {
                         cell.accessoryType = .none
@@ -148,7 +149,13 @@ class IlistViewController: UITableViewController {
                     }
                     
                     row4Item.checkItems = !row4Item.checkItems
-               }
+               } else {
+                    if cell.accessoryType == .none {
+                        cell.accessoryType = .checkmark
+                    } else {
+                        cell.accessoryType = .none
+                    }
+        }
        }
 }
 
