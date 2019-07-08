@@ -14,6 +14,10 @@ class IlistViewController: UITableViewController {
 //    todo list array.
     var todosList: ToDoList
 
+    @IBAction func addItem(_ sender: UIBarButtonItem) {
+        
+        print("Added item")
+    }
     
     //Setup the required initialization. when the view inilized from the storyboard.s
     required init?(coder aDecoder: NSCoder) {
@@ -23,6 +27,13 @@ class IlistViewController: UITableViewController {
         super.init(coder: aDecoder)
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+       //Setup the navigation bar title.
+  navigationController?.navigationBar.prefersLargeTitles = true
+    }
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
