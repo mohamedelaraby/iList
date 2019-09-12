@@ -9,7 +9,7 @@
 
 import UIKit
 
-class CheckListViewController: UITableViewController {
+class CheckListVC: UITableViewController {
 
     //@todoList :- new ToDoList Object
     var todosList: ToDoList

@@ -9,6 +9,7 @@
 import Foundation
 
 class CheckListItem {
+
     var text = " "
     var checkItem = false
     
