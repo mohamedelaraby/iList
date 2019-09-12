@@ -83,20 +83,42 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7de-uk-o6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Yb5-IT-yHK" customClass="AddItemVC" customModule="iList" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rIJ-tI-IG5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="rIJ-tI-IG5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DjK-n2-NZU">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DjK-n2-NZU" id="7d2-Gn-sKe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="SC5-xx-FdL">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="DjK-n2-NZU">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DjK-n2-NZU" id="7d2-Gn-sKe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2Y-en-gju">
+                                                    <rect key="frame" x="32" y="11" width="311" height="38"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done:" destination="Yb5-IT-yHK" eventType="editingDidEndOnExit" id="1kL-2b-6vc"/>
+                                                        <outlet property="delegate" destination="Yb5-IT-yHK" id="drO-il-RMt"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="z2Y-en-gju" firstAttribute="leading" secondItem="7d2-Gn-sKe" secondAttribute="leadingMargin" constant="16" id="9Ic-Zi-qqO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="z2Y-en-gju" secondAttribute="bottom" id="HJK-hK-h2w"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="z2Y-en-gju" secondAttribute="trailing" constant="16" id="YuL-Az-yKY"/>
+                                                <constraint firstItem="z2Y-en-gju" firstAttribute="top" secondItem="7d2-Gn-sKe" secondAttribute="topMargin" id="elt-6r-oqF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="Yb5-IT-yHK" id="B14-hr-vVg"/>
                             <outlet property="delegate" destination="Yb5-IT-yHK" id="88t-bV-Qc5"/>
@@ -114,9 +136,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="AddItemTextField" destination="z2Y-en-gju" id="m8C-1P-f2X"/>
+                    </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3199" y="77"/>
+            <point key="canvasLocation" x="3197.5999999999999" y="76.911544227886068"/>
         </scene>
     </scenes>
 </document>

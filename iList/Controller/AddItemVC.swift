@@ -1,26 +1,68 @@
-//
-//  AddItemTableViewController.swift
-//  iList
-//
-//  Created by Winston on 8/20/19.
-//  Copyright © 2019 Winston. All rights reserved.
-//
+/*
+ 
+ [ Author ] :- Muhammed Alaraby
+ [  Date ] :- 9/12/19
+ [ Info ] :- Add new Todo item
+ 
+ */
 
 import UIKit
 
 class AddItemVC: UITableViewController {
+    
+/*---------[ MARK:- IBOutlets ]---------------------------*/
+    @IBOutlet weak var AddItemTextField: UITextField!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        
+        //Disable the large title
+        navigationItem.largeTitleDisplayMode = .never
     }
 
-  
-    @IBAction func done(_ sender: Any) {
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        AddItemTextField.becomeFirstResponder()
     }
     
-    @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+    
+    
+/*---------[ MARK:- TAbleView Methods ]---------------------------*/
+    
+    // Diable  the selected row highlighted
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
     }
+    
+    
+    
+
+/*----------[ MARK:- Custom actions ]----------------*/
+    
+    // [ done ] :- Finishing add new item
+    @IBAction func done(_ sender: Any) {
+        print("Content of the text field is \(AddItemTextField.text!)")
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    // [ Cancel ] :- Return to the home screen
+    @IBAction func cancel(_ sender: Any) {
+       navigationController?.popViewController(animated: true)
+    }
+    
+
+}
+
+extension AddItemVC: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
 }
