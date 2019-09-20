@@ -107,9 +107,21 @@ class CheckListVC: UITableViewController {
     }
     
     
-        
 }
 
 
+//Conform AddItemViewControllerDelegate to manage the data passing between those ttow screens
+extension CheckListVC: AddItemViewControllerDelegate{
+    func addItemViewControllerDidCancel(_ controller: AddItemVC) {
+      navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: AddItemVC, didFinishAdding item: CheckListItem) {
+        navigationController?.popViewController(animated: true)
+
+    }
+    
+    
+}
 
 
